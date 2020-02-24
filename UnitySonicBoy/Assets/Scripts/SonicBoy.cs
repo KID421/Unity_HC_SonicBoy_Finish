@@ -42,10 +42,14 @@ public class SonicBoy : MonoBehaviour
         Physics.gravity = Vector3.up * -50;
     }
 
+    private void Update()
+    {
+        Jump();
+    }
+
     private void FixedUpdate()
     {
         Move();
-        Jump();
     }
 
     private void OnDrawGizmos()
@@ -108,7 +112,7 @@ public class SonicBoy : MonoBehaviour
             isGrounded = false;
             rig.constraints = RigidbodyConstraints.FreezeRotation;
         }
-        if (isGrounded && Input.GetKeyDown(KeyCode.Mouse0))
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rig.AddForce(transform.up * jump);
             rig.constraints = RigidbodyConstraints.FreezeRotation;
